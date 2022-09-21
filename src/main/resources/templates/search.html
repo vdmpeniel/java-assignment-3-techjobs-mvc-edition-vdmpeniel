@@ -2,69 +2,89 @@
 <html xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head">
 </head>
-<body>
+    <body>
 
-<div th:replace="fragments :: page-header"></div>
+        <div th:replace="fragments :: page-header"></div>
 
-<div class="container body-content">
+        <div class="container body-content">
 
-    <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
+            <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
 
-    <form th:action="@{/search/results}" method = "post">
-        <h2>Search by:</h2>
+            <form th:action="@{/search/results}" method = "post">
+                <h2>Search by:</h2>
 
-        <p>
-            <span th:each="column : ${columns}">
-                <input
-                        type="radio"
-                        name="searchType"
-                        th:id="${column.key}"
-                        th:value="${column.key}"
-                        th:checked="${column.key == searchType}"/>
-                <label th:for="${column.key}" th:text="${column.value}"></label>
-            </span>
+                <p>
+                    <span th:each="column : ${columns}">
+                        <input
+                                type="radio"
+                                name="searchType"
+                                th:id="${column.key}"
+                                th:value="${column.key}"
+                                th:checked="${column.key == searchType}"/>
+                        <label th:for="${column.key}" th:text="${column.value}"></label>
+                    </span>
 
-        </p>
+                </p>
 
-        <p>
-            <label for="searchTerm">Keyword:</label>
-            <input type="text" name="searchTerm" id="searchTerm" th:value="${searchTerm}"/>
-        </p>
+                <p>
+                    <label for="searchTerm">Keyword:</label>
+                    <input type="text" name="searchTerm" id="searchTerm" th:value="${searchTerm}"/>
+                </p>
 
-        <input type="submit" value="Search" />
-    </form>
+                <input type="submit" value="Search" />
+            </form>
 
-    <hr />
+            <hr />
 
-    <!-- TODO #4 - Loop over the search results to display all job fields. -->
-    <table th:each="job : ${jobs}" class="job-listing">
-        <tr>
-            <td>ID</td>
-            <td th:text="${job.id}"></td>
-        </tr>
-        <tr>
-            <td>Name</td>
-            <td th:text="${job.name}"></td>
-        </tr>
-        <tr>
-            <td>Employer</td>
-            <td th:text="${job.employer}"></td>
-        </tr>
-        <tr>
-            <td>Location</td>
-            <td th:text="${job.location}"></td>
-        </tr>
-        <tr>
-            <td>Position Type</td>
-            <td th:text="${job.positionType}"></td>
-        </tr>
-        <tr>
-            <td>Skill</td>
-            <td th:text="${job.coreCompetency}"></td>
-        </tr>
-    </table>
+            <!-- TODO #4 - Loop over the search results to display all job fields. -->
+            <table th:each="job : ${jobs}" class="job-listing">
+                <tr>
+                    <td class="data-label">ID</td>
+                    <td th:text="${job.id}"></td>
+                </tr>
+                <tr>
+                    <td class="data-label">Name</td>
+                    <td th:text="${job.name}"></td>
+                </tr>
+                <tr>
+                    <td class="data-label">Employer</td>
+                    <td>
+                        <a
+                            th:href="@{/list/jobs(column=employer, value=${job.employer})}"
+                            th:text="${job.employer}"
+                        ></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="data-label">Location</td>
+                    <td>
+                        <a
+                            th:href="@{/list/jobs(column=location, value=${job.location})}"
+                            th:text="${job.location}"
+                        ></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="data-label">Position Type</td>
+                    <td>
+                        <a
+                            th:href="@{/list/jobs(column=positionType, value=${job.positionType})}"
+                            th:text="${job.positionType}"
+                        ></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="data-label">Skill</td>
+                    <td>
+                        <a
+                            th:href="@{/list/jobs(column=coreCompetency, value=${job.coreCompetency})}"
+                            th:text="${job.coreCompetency}"
+                        ></a>
+                    </td>
+                </tr>
+            </table>
 
-</div>
+        </div>
 
-</body>
+    </body>
 </html>

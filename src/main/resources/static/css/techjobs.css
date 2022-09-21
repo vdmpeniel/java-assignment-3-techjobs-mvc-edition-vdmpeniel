@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&family=Secular+One&family=Source+Code+Pro:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;1,100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap');
+
 .body-content {
     margin-top: 72px;
 }
@@ -23,10 +27,38 @@ tr:nth-child(odd) {
     margin-right: auto;
 }
 
+
+:root{
+    --corner_radius: 10px;
+}
 table.job-listing {
     margin: 30px auto;
-    border: 1px solid #e4e4e4;
+    border: 1px solid #e3e3e3;
     width: 80%;
+
+    font.family: 'Secular One', sans-serif;
+    font-weight: 100;
+    font-family: Lato, sans-serif;
+    font-style: oblique;
+
+    border-spacing: 0 !important;
+    border-collapse: separate !important;
+    border-radius: var(--corner_radius) !important;
+}
+table td {
+  border: none !important
+}
+table.job-listing tr:first-child td:first-child {
+    border-radius: var(--corner_radius) 0 0 0 !important;
+}
+table.job-listing tr:first-child td:last-child {
+    border-radius: 0 var(--corner_radius) 0 0 !important;
+}
+table.job-listing tr:last-child td:first-child {
+    border-radius: 0 0 0 var(--corner_radius) !important;
+}
+table.job-listing tr:last-child td:last-child {
+    border-radius: 0 0 var(--corner_radius) 0 !important;
 }
 
 table.job-listing td:first-child {
@@ -37,10 +69,47 @@ table.job-listing td:last-child {
     width: 80%;
 }
 
+
+
+
 label {
-    margin-right: 15px;
+    margin-right: 15px;z
 }
 
 .centered {
     text-align: center;
+}
+
+
+
+
+.navbar a{
+    color: #cccc00 !important;
+}
+.navbar a:hover{
+    color: white !important;
+}
+.logo{
+    font-family: 'Bungee Shade', sans-serif;
+    font-size: 1.8em;
+    /*color: #cccc00 !important;*/
+}
+h1{
+    padding: 0 auto;
+    font-family: Raleway, sans-serif;
+    font-weight: 400;
+    font-size: 2em;
+    text-align: center;
+}
+.data-label{
+    font-family: Raleway, sans-serif;
+    font-weight: 600;
+    font-style: initial;
+    color: #101010;
+}
+table.job-listing tr:nth-child(odd) .data-label{
+    background-color: #eeee00;
+}
+table.job-listing tr:nth-child(even) .data-label{
+    background-color: #ffff77;
 }
